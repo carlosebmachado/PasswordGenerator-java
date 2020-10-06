@@ -23,11 +23,11 @@
  */
 package me.carlosmachado.main;
 
-import com.sun.glass.events.KeyEvent;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import javax.swing.JFileChooser;
@@ -43,9 +43,9 @@ public class MainForm extends javax.swing.JFrame {
     public MainForm() {
         initComponents();
 
-        URL url = this.getClass().getResource("/res/icon.png");
-        Image icon = Toolkit.getDefaultToolkit().getImage(url);
-        this.setIconImage(icon);
+        //URL url = this.getClass().getResource("/res/icon.png");
+        //Image icon = Toolkit.getDefaultToolkit().getImage(url);
+        //this.setIconImage(icon);
     }
 
     /**
@@ -82,6 +82,7 @@ public class MainForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Password Generator");
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/res/icon.png")));
         setLocationByPlatform(true);
         setName("mainForm"); // NOI18N
         setResizable(false);
@@ -286,6 +287,8 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        getAccessibleContext().setAccessibleName("");
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -296,7 +299,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jTextFieldLengthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldLengthKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE) {
+        if (!Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextFieldLengthKeyTyped
