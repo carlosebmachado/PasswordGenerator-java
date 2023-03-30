@@ -23,13 +23,11 @@
  */
 package me.carlosmachado.main;
 
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.net.URL;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -42,10 +40,6 @@ public class MainForm extends javax.swing.JFrame {
      */
     public MainForm() {
         initComponents();
-
-        //URL url = this.getClass().getResource("/res/icon.png");
-        //Image icon = Toolkit.getDefaultToolkit().getImage(url);
-        //this.setIconImage(icon);
     }
 
     /**
@@ -94,25 +88,25 @@ public class MainForm extends javax.swing.JFrame {
 
         jPanelCustom.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jCheckBoxLowercase.setText("ex. abcdefgh");
+        jCheckBoxLowercase.setText("e.g. abcdefgh");
 
-        jLabelUppercase.setText("Incluir Caracteres Maiúsculos");
+        jLabelUppercase.setText("Uppercase characters");
 
-        jCheckBoxUppercase.setText("ex. ABCDEFGH");
+        jCheckBoxUppercase.setText("e.g. ABCDEFGH");
 
-        jLabelLength.setText("Tamanho da Senha");
+        jLabelLength.setText("Length");
 
-        jLabelSymbol.setText("Incluir Símbolos");
+        jLabelSymbol.setText("Symbols");
 
-        jCheckBoxSymbol.setText("ex. @#$%");
+        jCheckBoxSymbol.setText("e.g. @#$%");
 
-        jLabelNumber.setText("Incluir Números");
+        jLabelNumber.setText("Numbers");
 
-        jCheckBoxNumbers.setText("ex. 123456");
+        jCheckBoxNumbers.setText("e.g. 123456");
 
-        jLabelLowercase.setText("Incluir Caracteres Minúsculos");
+        jLabelLowercase.setText("Lowercase characters");
 
-        jTextFieldLength.setText("4");
+        jTextFieldLength.setText("12");
         jTextFieldLength.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldLengthFocusLost(evt);
@@ -177,45 +171,45 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jButtonGenerate.setText("Gerar");
+        jButtonGenerate.setText("Generate");
         jButtonGenerate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGenerateActionPerformed(evt);
             }
         });
 
-        jRadioButtonDefaultPass.setText("Padrão");
+        jRadioButtonDefaultPass.setText("Default");
         jRadioButtonDefaultPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonDefaultPassActionPerformed(evt);
             }
         });
 
-        jRadioButtonCustomPass.setText("Customizado");
+        jRadioButtonCustomPass.setText("Custom");
         jRadioButtonCustomPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonCustomPassActionPerformed(evt);
             }
         });
 
-        jButtonCopy.setText("Copiar");
+        jButtonCopy.setText("Copy");
         jButtonCopy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCopyActionPerformed(evt);
             }
         });
 
-        jButtonClean.setText("Limpar");
+        jButtonClean.setText("Clear");
         jButtonClean.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCleanActionPerformed(evt);
             }
         });
 
-        jMenuArquivo.setText("Arquivo");
+        jMenuArquivo.setText("File");
 
-        jMenuItemSalvarSenha.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItemSalvarSenha.setText("Salvar Senha");
+        jMenuItemSalvarSenha.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItemSalvarSenha.setText("Save Password");
         jMenuItemSalvarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemSalvarSenhaActionPerformed(evt);
@@ -223,7 +217,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         jMenuArquivo.add(jMenuItemSalvarSenha);
 
-        jMenuItemSair.setText("Sair");
+        jMenuItemSair.setText("Exit");
         jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemSairActionPerformed(evt);
@@ -233,7 +227,7 @@ public class MainForm extends javax.swing.JFrame {
 
         jMenuBar.add(jMenuArquivo);
 
-        jMenuSobre.setText("Sobre");
+        jMenuSobre.setText("About");
         jMenuSobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuSobreMouseClicked(evt);
@@ -339,7 +333,6 @@ public class MainForm extends javax.swing.JFrame {
             } else {
                 jTextFieldPassword.setText(PasswordGenerator.customPass(Integer.parseInt(jTextFieldLength.getText()), jCheckBoxLowercase.isSelected(), jCheckBoxNumbers.isSelected(), jCheckBoxSymbol.isSelected(), jCheckBoxUppercase.isSelected()));
             }
-
         }
     }//GEN-LAST:event_jButtonGenerateActionPerformed
 
@@ -389,26 +382,32 @@ public class MainForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Arquivo Criado.");
             } else if (file.exists()) {
                 int res = JOptionPane.showConfirmDialog(this, "Já existe um arquivo com esse nome. Você deseja sobrescrever?");
-                if (res == JOptionPane.YES_OPTION) {
-                    Write.writeStringOnTxtFile(jTextFieldPassword.getText(), file.getAbsolutePath());
-                    JOptionPane.showMessageDialog(this, "Arquivo Criado.");
-                } else if (res == JOptionPane.NO_OPTION) {
-                    if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
-                        file = fileChooser.getSelectedFile();
-                        if (!file.exists()) {
-                            Write.writeStringOnTxtFile(jTextFieldPassword.getText(), file.getAbsolutePath());
-                            JOptionPane.showMessageDialog(this, "Arquivo Criado.");
+                switch (res) {
+                    case JOptionPane.YES_OPTION:
+                        Write.writeStringOnTxtFile(jTextFieldPassword.getText(), file.getAbsolutePath());
+                        JOptionPane.showMessageDialog(this, "Arquivo Criado.");
+                        break;
+                    case JOptionPane.NO_OPTION:
+                        if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+                            file = fileChooser.getSelectedFile();
+                            if (!file.exists()) {
+                                Write.writeStringOnTxtFile(jTextFieldPassword.getText(), file.getAbsolutePath());
+                                JOptionPane.showMessageDialog(this, "Arquivo Criado.");
+                            }
                         }
-                    }
-                } else if (res == JOptionPane.CANCEL_OPTION) {
-                    JOptionPane.showMessageDialog(this, "Cancelado pelo usuário.");
+                        break;
+                    case JOptionPane.CANCEL_OPTION:
+                        JOptionPane.showMessageDialog(this, "Cancelado pelo usuário.");
+                        break;
+                    default:
+                        break;
                 }
             }
         }
     }//GEN-LAST:event_jMenuItemSalvarSenhaActionPerformed
 
     private void jMenuSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSobreMouseClicked
-        JOptionPane.showMessageDialog(null, "Criado por Carlos Machado.\nLivre para uso e modificação.");
+        JOptionPane.showMessageDialog(null, "Developed by Carlos Machado.\nMIT Licence.");
     }//GEN-LAST:event_jMenuSobreMouseClicked
 
     private void enableCustom(boolean enable) {
@@ -432,7 +431,7 @@ public class MainForm extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

@@ -34,7 +34,7 @@ public class Write {
 
     public static void writeStringOnTxtFile(String str, String path) {
         String extension = ".txt";
-        if(path.contains(extension)){
+        if (path.contains(extension)) {
             extension = "";
         }
         try {

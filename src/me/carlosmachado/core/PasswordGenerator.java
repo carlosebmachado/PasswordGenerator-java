@@ -46,7 +46,7 @@ public class PasswordGenerator {
 
     public static String customPass(
             int lenght, boolean lowercase, boolean number,
-                        boolean symbol, boolean uppercase) {
+            boolean symbol, boolean uppercase) {
         String lowerChars = "abcdefghijklmnopqrstuvwxyz";
         String symbolChars = "@#$%{}[]()/~,;:.<>";
 
@@ -63,7 +63,7 @@ public class PasswordGenerator {
             characters += symbolChars;
         }
         if (number) {
-            for(int i = 0; i < 10; i++){
+            for (int i = 0; i < 10; i++) {
                 characters += Integer.toString(i);
             }
         }
