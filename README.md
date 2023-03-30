@@ -13,8 +13,8 @@ Usage
 1. Launch the application.
 1. Enter the desired password length.
 1. Select the checkboxes for the characters you want to include in the password.
-1. Click on the "Gerar" button to generate a random password.
-1. To copy the password to clipboard, click on the "Copiar" button or save in a .txt file using the "Arquivo > Salvar Senha" menu path.
+1. Click on the "Generate" button to generate a random password.
+1. To copy the password to clipboard, click on the "Copy Password" button or save in a .txt file using the "File > Save Password" menu path.
 
 License
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/carlosebmachado/password-generator-desktop/blob/master/README.md) file for details.
